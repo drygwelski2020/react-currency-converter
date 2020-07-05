@@ -7,10 +7,12 @@ export function Currency() {
   const params = useParams()
   console.log(`Loading params: ${params}`)
 
-  const [currencyDetails, setCurrencyDetails] = useState({})
+  const [currencyDetails, setCurrencyDetails] = useState({
+    rates: [],
+  })
 
   const loadCurrencyFromApi = () => {
-    const url = `https://api.ratesapi.io/api/latest?base=USD&symbols=USD,GBP`
+    const url = `https://api.ratesapi.io/api/latest?base=USD`
     console.log(`Loading from ${url}`)
 
     fetch(url)
@@ -21,15 +23,16 @@ export function Currency() {
       })
   }
 
-  // useEffect(() => {
-  //  loadCurrencyFromApi(), []
-  // })
-
   loadCurrencyFromApi()
+
+  //useEffect(() => {
+  //  setCurrencyDetails(), [{}]
+  //})
 
   return (
     <>
       <p>Enter an amount (in US Dollars) to convert: </p>
+
       <input type="text" className="mr-2"></input>
 
       <button
