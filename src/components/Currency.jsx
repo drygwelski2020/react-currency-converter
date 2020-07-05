@@ -5,7 +5,6 @@ export function Currency() {
   // Get matching params on whatever
   // Route caused *us* to be rendered
   const params = useParams()
-  console.log(`Loading params: ${params}`)
 
   const [currencyDetails, setCurrencyDetails] = useState({
     rates: [],
@@ -17,13 +16,10 @@ export function Currency() {
 
     fetch(url)
       .then(response => response.json())
-      .then(apiData => {
-        console.log(`API data is: ${apiData}`)
-        setCurrencyDetails(apiData)
-      })
+      .then(apiData => setCurrencyDetails(apiData))
   }
 
-  loadCurrencyFromApi()
+  //loadCurrencyFromApi()
 
   //useEffect(() => {
   //  setCurrencyDetails(), [{}]
