@@ -7,7 +7,9 @@ export function Currency() {
   const params = useParams()
 
   const [currencyDetails, setCurrencyDetails] = useState({
-    rates: [],
+    base: undefined,
+    rates: [undefined],
+    date: undefined,
   })
 
   const loadCurrencyFromApi = () => {
@@ -31,14 +33,10 @@ export function Currency() {
 
       <input type="text" className="mr-2"></input>
 
-      <button
-        className="btn btn-primary btn-sm"
-        onClick={() => {
-          setCurrencyDetails()
-        }}
-      >
-        Go
-      </button>
+      <form>
+        <input />
+        <button>Go</button>
+      </form>
 
       <div className="media">
         <div className="media-body">
