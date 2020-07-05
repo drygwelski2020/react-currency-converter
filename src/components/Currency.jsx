@@ -6,15 +6,10 @@ export function Currency() {
   // Route caused *us* to be rendered
   //const params = useParams()
 
-  const [currencyDetails, setCurrencyDetails] = useState({
-    base: undefined,
-    rates: [],
-    date: undefined,
-  })
+  const [currencyDetails, setCurrencyDetails] = useState({})
 
   const loadCurrencyFromApi = () => {
     const url = `https://api.ratesapi.io/api/latest?base=USD`
-    console.log(`Loading from ${url}`)
 
     fetch(url)
       .then(response => response.json())
@@ -30,17 +25,17 @@ export function Currency() {
   }) 
   } */
 
+  //const rates = [{ 1: 'one' }, { 2: 'two' }, { 3: 'three' }, { 4: 'four' }]
   const rates = [1, 2, 3, 4]
-  const listItems = rates.map(rate => <li>{rate * 3}</li>)
+  const listItems = rates.map(rate => <li>{rate * 2}</li>)
 
   return (
     <>
-      <p>Enter an amount (in US Dollars) to convert: </p>
+      <p>Enter an amount (in U.S. Dollars) to convert: </p>
 
       <form>
         <input
           className="mr-2"
-          // onChange={event => setCurrencyDetails(event.target.value)}
           // onChange={event = showCurrencyRates(event.target.value)}
         />
         <button>Go</button>
@@ -50,10 +45,17 @@ export function Currency() {
         <div className="media-body">
           <h4 className="mt-0">PRINTING: {currencyDetails.base}</h4>
           This shows: <br />
-          {currencyDetails.base}
+          <br />
+          Base: {currencyDetails.base}
+          <br />
+          Current Date: {currencyDetails.date}
+          <br />
+          <br />
           {/* {currencyDetails.rates} */}
-          {listItems}
-          {currencyDetails.date}
+          Rates: {rates}
+          <br />
+          <br />
+          Rates x2: {listItems}
         </div>
       </div>
     </>
