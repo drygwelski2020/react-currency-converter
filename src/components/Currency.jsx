@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+//import { useParams } from 'react-router'
 
 export function Currency() {
   // Get matching params on whatever
   // Route caused *us* to be rendered
-  const params = useParams()
+  //const params = useParams()
 
   const [currencyDetails, setCurrencyDetails] = useState({
     base: undefined,
-    rates: [undefined],
+    rates: [],
     date: undefined,
   })
 
@@ -19,22 +19,30 @@ export function Currency() {
     fetch(url)
       .then(response => response.json())
       .then(apiData => setCurrencyDetails(apiData))
+    //console.log(apiData)
   }
 
-  //loadCurrencyFromApi()
+  loadCurrencyFromApi()
 
-  //useEffect(() => {
-  //  setCurrencyDetails(), [{}]
-  //})
+  /*  {
+     useEffect(() => {
+  setCurrencyValues(), []
+  }) 
+  } */
+
+  const rates = [1, 2, 3, 4]
+  const listItems = rates.map(rate => <li>{rate * 3}</li>)
 
   return (
     <>
       <p>Enter an amount (in US Dollars) to convert: </p>
 
-      <input type="text" className="mr-2"></input>
-
       <form>
-        <input />
+        <input
+          className="mr-2"
+          // onChange={event => setCurrencyDetails(event.target.value)}
+          // onChange={event = showCurrencyRates(event.target.value)}
+        />
         <button>Go</button>
       </form>
 
@@ -44,7 +52,7 @@ export function Currency() {
           This shows: <br />
           {currencyDetails.base}
           {/* {currencyDetails.rates} */}
-          <br />
+          {listItems}
           {currencyDetails.date}
         </div>
       </div>

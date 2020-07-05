@@ -14,6 +14,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Currency />
+              
             </Route>
           </Switch>
         </Router>
